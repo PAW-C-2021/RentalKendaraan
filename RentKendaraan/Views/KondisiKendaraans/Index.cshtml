@@ -13,7 +13,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NamaKondisi)
+                @Html.DisplayName("NamaKondisi")
             </th>
             <th></th>
         </tr>
@@ -25,9 +25,9 @@
                 @Html.DisplayFor(modelItem => item.NamaKondisi)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdKondisi">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdKondisi">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdKondisi">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.IdKondisi"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a asp-action="Details" asp-route-id="@item.IdKondisi"><i class="fa fa-list" aria-hidden="true"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.IdKondisi"><i class="fa fa-trash" aria-hidden="true"></i></a>
             </td>
         </tr>
 }

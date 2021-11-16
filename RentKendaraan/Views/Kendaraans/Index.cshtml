@@ -13,19 +13,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.NamaKendaraan)
+                @Html.DisplayName("Nama Kendaraan")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NoPolisi)
+                @Html.DisplayName("Nomor Polisi")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NoStnk)
+                @Html.DisplayName("No STNK")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Ketersediaan)
+                @Html.DisplayName("Ketersediaan")
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdJenisKendaraanNavigation)
+                @Html.DisplayName("Jenis Kendaraan")
             </th>
             <th></th>
         </tr>
@@ -49,9 +49,9 @@
                 @Html.DisplayFor(modelItem => item.IdJenisKendaraanNavigation.IdJenisKendaraan)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdKendaraan">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdKendaraan">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdKendaraan">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.IdKendaraan"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a asp-action="Details" asp-route-id="@item.IdKendaraan"><i class="fa fa-list" aria-hidden="true"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.IdKendaraan"><i class="fa fa-trash" aria-hidden="true"></i></a>
             </td>
         </tr>
 }
