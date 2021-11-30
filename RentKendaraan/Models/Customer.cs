@@ -29,3 +29,5 @@ namespace RentKendaraan.Models
         public virtual ICollection<Peminjaman> Peminjamen { get; set; }
     }
 }
+
+//
