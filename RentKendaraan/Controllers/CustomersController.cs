@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RentKendaraan.Models;
 
-namespace RentKendaraan.Controllers
+namespace RentalKendaraan.Controllers
 {
     public class CustomersController : Controller
     {
@@ -35,7 +35,7 @@ namespace RentKendaraan.Controllers
 
             var customer = await _context.Customers
                 .Include(c => c.IdGenderNavigation)
-                .FirstOrDefaultAsync(m => m.IdCustomer == id);
+                .FirstOrDefaultAsync(m => m.IdCostumer == id);
             if (customer == null)
             {
                 return NotFound();
@@ -52,8 +52,8 @@ namespace RentKendaraan.Controllers
         }
 
         // POST: Customers/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdCustomer,NamaCustomer,Nik,Alamat,NoHp,IdGender")] Customer customer)
@@ -86,13 +86,13 @@ namespace RentKendaraan.Controllers
         }
 
         // POST: Customers/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IdCustomer,NamaCustomer,Nik,Alamat,NoHp,IdGender")] Customer customer)
         {
-            if (id != customer.IdCustomer)
+            if (id != customer.IdCostumer)
             {
                 return NotFound();
             }
@@ -106,7 +106,7 @@ namespace RentKendaraan.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CustomerExists(customer.IdCustomer))
+                    if (!CustomerExists(customer.IdCostumer))
                     {
                         return NotFound();
                     }
@@ -120,7 +120,6 @@ namespace RentKendaraan.Controllers
             ViewData["IdGender"] = new SelectList(_context.Genders, "IdGender", "IdGender", customer.IdGender);
             return View(customer);
         }
-
         // GET: Customers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -131,7 +130,7 @@ namespace RentKendaraan.Controllers
 
             var customer = await _context.Customers
                 .Include(c => c.IdGenderNavigation)
-                .FirstOrDefaultAsync(m => m.IdCustomer == id);
+                .FirstOrDefaultAsync(m => m.IdCostumer == id);
             if (customer == null)
             {
                 return NotFound();
@@ -153,7 +152,7 @@ namespace RentKendaraan.Controllers
 
         private bool CustomerExists(int id)
         {
-            return _context.Customers.Any(e => e.IdCustomer == id);
+            return _context.Customers.Any(e => e.IdCostumer == id);
         }
     }
 }

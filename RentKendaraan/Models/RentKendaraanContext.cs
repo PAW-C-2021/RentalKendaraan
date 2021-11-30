@@ -41,11 +41,11 @@ namespace RentKendaraan.Models
 
             modelBuilder.Entity<Customer>(entity =>
             {
-                entity.HasKey(e => e.IdCustomer);
+                entity.HasKey(e => e.IdCostumer);
 
                 entity.ToTable("Customer");
 
-                entity.Property(e => e.IdCustomer)
+                entity.Property(e => e.IdCostumer)
                     .ValueGeneratedNever()
                     .HasColumnName("ID_Customer");
 
