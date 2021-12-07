@@ -18,6 +18,38 @@ namespace RentKendaraan.Controllers
             _context = context;
         }
 
+
+        // GET: Kendaraans
+        public async Task<IActionResult> Index(string ktsd, string searchString)
+        {
+            /*       var rentKendaraanContext = _context.Kendaraans.Include(k => k.IdJenisKendaraanNavigation);
+                   return View(await rentKendaraanContext.ToListAsync());*/
+
+            //buat list menyimpan kendaraan
+            var ktsdList = new List<string>();
+            //query mengambil data
+            var ktsdQuery = from d in _context.Kendaraans orderby d.Ketersediaan select d.Ketersediaan;
+            ktsdList.AddRange(ktsdQuery.Distinct());
+            //menampilkan di view
+            ViewBag.ktsd = new SelectList(ktsdList);
+            //panggul db context
+            var menu = from m in _context.Kendaraans.Include(k => k.IdJenisKendaraanNavigation) select m;
+            //untuk memilih dropdown list ketersediaan
+            if (!string.IsNullOrEmpty(ktsd))
+            {
+                menu = menu.Where(x => x.Ketersediaan == ktsd);
+            }
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                menu = menu.Where(s => s.NoPolisi.Contains(searchString) || s.NamaKendaraan.Contains(searchString)
+                || s.NoStnk.Contains(searchString));
+            }
+            return View(await menu.ToListAsync());
+        }
+
+
+
+
         // GET: Kendaraans
         public async Task<IActionResult> Index()
         {
