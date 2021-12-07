@@ -9,6 +9,17 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+@using (Html.BeginForm("Index", "Customers", FormMethod.Get))
+{
+    <p>
+        Gender : @Html.DropDownList("ktsd", "Pilih Gender")
+        Cari Data : @Html.TextBox("searchString")
+        <input type="submit" value="Filter" />
+    </p>
+}
+
+
 <table class="table">
     <thead>
         <tr>
@@ -31,29 +42,30 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TglPeminjaman)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Biaya)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdCostumerNavigation.IdCostumer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdJaminanNavigation.IdJaminan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdKendaraanNavigation.IdKendaraan)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdPeminjaman"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                <a asp-action="Details" asp-route-id="@item.IdPeminjaman"><i class="fa fa-list" aria-hidden="true"></i></a>
-                <a asp-action="Delete" asp-route-id="@item.IdPeminjaman"><i class="fa fa-trash" aria-hidden="true"></i></a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TglPeminjaman)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Biaya)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdCostumerNavigation.IdCostumer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdJaminanNavigation.IdJaminan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdKendaraanNavigation.IdKendaraan)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdPeminjaman"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.IdPeminjaman"><i class="fa fa-list" aria-hidden="true"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.IdPeminjaman"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

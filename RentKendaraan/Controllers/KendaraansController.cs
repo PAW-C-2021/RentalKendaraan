@@ -51,11 +51,6 @@ namespace RentKendaraan.Controllers
 
 
         // GET: Kendaraans
-        public async Task<IActionResult> Index()
-        {
-            var rentKendaraanContext = _context.Kendaraans.Include(k => k.IdJenisKendaraanNavigation);
-            return View(await rentKendaraanContext.ToListAsync());
-        }
 
         // GET: Kendaraans/Details/5
         public async Task<IActionResult> Details(int? id)
